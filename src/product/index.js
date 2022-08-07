@@ -8,7 +8,7 @@ export default function ProductPage(){
   const [product, setProduct] = useState(null);
   useEffect(() => {
     axios
-    .get(`https://ecfd1ca3-5759-43ab-802e-43e743c81c63.mock.pstmn.io/products/${id}`)
+    .get(`https://192.168.35.3:8080/products/${id}`)
     .then((result) => {
       setProduct(result.data);
         console.log(result);

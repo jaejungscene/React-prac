@@ -9,7 +9,7 @@ import TimerComponent from './time'
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <TimerComponent/> */}
+      {/* <TimerComponent name='jaejung' studentid={123}/> */}
       <App />
     </BrowserRouter>
   </React.StrictMode>,

@@ -8,7 +8,7 @@ export default function MainPage(){
   console.log('check')
   useEffect(()=>{
     axios
-    .get("https://ecfd1ca3-5759-43ab-802e-43e743c81c63.mock.pstmn.io/products")
+    .get("http://192.168.35.3:8080/products") // raspberrypi 켜져있을 때
     .then((result)=>{
       setProducts(result.data.products);
       console.log(products)
