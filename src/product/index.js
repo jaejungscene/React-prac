@@ -8,10 +8,10 @@ export default function ProductPage(){
   const [product, setProduct] = useState(null);
   useEffect(() => {
     axios
-    .get(`https://192.168.35.3:8080/products/${id}`)
+    .get(`http://localhost:8080/products/${id}`)
     .then((result) => {
-      setProduct(result.data);
         console.log(result);
+        setProduct(result.data.product);
       })
     .catch((error) => {
       console.error(error);
@@ -23,8 +23,6 @@ export default function ProductPage(){
       <h1>상품 정보를 받고 있습니다...</h1>
     )
   }
-
-  console.log('check')
 
   return(
     <div>

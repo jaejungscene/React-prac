@@ -8,9 +8,10 @@ export default function MainPage(){
   console.log('check')
   useEffect(()=>{
     axios
-    .get("http://192.168.35.3:8080/products") // raspberrypi 켜져있을 때
+    .get("http://localhost:8080/products")
     .then((result)=>{
       setProducts(result.data.products);
+      console.log(result.data.products);
       console.log(products)
     })
     .catch((error)=>{
