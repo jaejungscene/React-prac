@@ -1,12 +1,33 @@
-import { Divider, Form, Input, InputNumber, Button, Upload } from "antd";
+import { Divider, Form, Input, InputNumber, Button, Upload, message } from "antd";
 import { useState } from "react";
 import "./index.css";
+import { API_URL } from "../config/constants";
+import axios from "axios";
+import {useHistory} from "react-router-dom";
 
 export default function UploadPage() {
   const [imageUrl, setImageUrl] = useState(null);
+  const history = useHistory();
+
   const onSubmit = (values) => {
+    axios.post(`${API_URL}/products`, {
+      name: values.name,
+      description: values.description,
+      seller: values.seller,
+      price: parseInt(values.price),
+      imageUrl: imageUrl,
+    })
+    .then((result)=>{
+      console.log(result);
+      history.replace("/"); // 이전 페이지로 대체
+    })
+    .catch((error)=>{
+      console.error(error);
+      message.error(`에러가 발생했습니다. ${error.message}`);
+    });
     console.log(values);
   };
+
   const onChangeImage = (info)=>{
     if(info.file.status === "uploading"){
       return;
@@ -17,7 +38,7 @@ export default function UploadPage() {
       setImageUrl(imageUrl);
     }
   }
-  const serverAddr = "http://localhost:8080"
+
   return (
     <div id="upload-container">
       <Form name="상품 업로드" onFinish={onSubmit}>
@@ -27,14 +48,14 @@ export default function UploadPage() {
         >
           <Upload
             name="image"
-            action={`${serverAddr}/image`}
+            action={`${API_URL}/images`}
             listType="picture"
             showUploadList={false}
             onChange={onChangeImage}
           >
             { // if imageUrl is received, view the uploaded image
               imageUrl
-              ? <img id="upload-img" src={`${serverAddr}/${imageUrl}`}/>
+              ? <img id="upload-img" src={`${API_URL}/${imageUrl}`}/>
               : (
                 <div id="upload-img-placeholder">
                   <img src="/images/icons/camera.png" />
