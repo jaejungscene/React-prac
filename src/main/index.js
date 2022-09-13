@@ -13,7 +13,6 @@ export default function MainPage(){
     .then((result)=>{
       setProducts(result.data.products);
       console.log(result.data.products);
-      console.log(products)
     })
     .catch((error)=>{
       console.error("error occurs : ", error)
