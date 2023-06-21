@@ -7,6 +7,7 @@ import { API_URL } from "../config/constants";
 export default function ProductPage(){
   const {id} = useParams(); // App.js에 ":id" 부분에 들어가는 값이 전달됨
   const [product, setProduct] = useState(null);
+  console.log("product id: ", id);
   useEffect(() => {
     axios
     .get(`${API_URL}/products/${id}`)
