@@ -8,7 +8,7 @@ import React, {useState, useMemo} from 'react';
 
 export function UseMemoBefore(){
   const [number, setNumber] = useState(0);
-  const squaredNum =  squareNum(number);
+  const squaredNum = squareNum(number);
   const [counter, setCounter] = useState(0);
 
   // Change the state to the input
@@ -21,15 +21,18 @@ export function UseMemoBefore(){
     setCounter(counter + 1);
   }
   return (
-    <div>
-      <h1>Welcome to Geeksforgeeks</h1>
+    <div style={{borderStyle: 'solid', borderWidth: '1px', padding:'10px'}}>
+      <b>-- before useMemo() --</b>
+      <br></br>
+      <br></br>
       <input type="number" placeholder="Enter a number"
         value={number} onChange={onChangeHandler}>
       </input>
-      
       <div>OUTPUT: {squaredNum}</div>
+      <hr></hr>
       <button onClick= {counterHander}>Counter ++</button>
       <div>Counter : {counter}</div>
+      <p>squaredNum() function is called {} times.</p>
     </div>
   );
 }
@@ -58,15 +61,18 @@ export function UseMemoAfter(){
     setCounter(counter + 1);
   }
   return (
-    <div>
-      <h1>Welcome to Geeksforgeeks</h1>
+    <div style={{borderStyle: 'solid', borderWidth: '1px', padding:'10px'}}>
+      <b>-- after useMemo() --</b>
+      <br></br>
+      <br></br>
       <input type="number" placeholder="Enter a number"
           value={number} onChange={onChangeHandler}>
       </input>
-       
       <div>OUTPUT: {squaredNum}</div>
+      <hr></hr>
       <button onClick= {counterHander}>Counter ++</button>
       <div>Counter : {counter}</div>
+      <p>squaredNum() function is called {} times.</p>
     </div>
   );
 }
